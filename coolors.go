@@ -9,3 +9,7 @@ func Red(r uint32) color.RGBA {
 func Green(g uint32) color.RGBA {
 	return color.RGBA{0, uint8(g), 0, 255}
 }
+
+func Blue(b uint32) color.RGBA {
+	return color.RGBA{0, 0, uint8(b >> 8), 255}
+}
