@@ -24,3 +24,24 @@ func Color(r, g, b uint32, col color.RGBA) color.RGBA {
 
 	return pixel
 }
+
+func Bright(r, g, b uint32, brightness int32) color.RGBA {
+	normalize := func(n int32) uint8 {
+		if n > 255 {
+			return 255
+		} else if n < 0 {
+			return 0
+		}
+
+		return uint8(n)
+	}
+
+	pixel := color.RGBA{}
+
+	pixel.R = normalize(int32(r>>8) + brightness)
+	pixel.G = normalize(int32(g>>8) + brightness)
+	pixel.B = normalize(int32(b>>8) + brightness)
+	pixel.A = 255
+
+	return pixel
+}
